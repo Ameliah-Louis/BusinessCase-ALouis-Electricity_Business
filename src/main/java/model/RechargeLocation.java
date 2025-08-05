@@ -1,6 +1,5 @@
 package model;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
@@ -14,33 +13,25 @@ import java.util.Objects;
 @NoArgsConstructor //constructeur vide ou par défaut
 @AllArgsConstructor //constructeur avec tous les champs même non obligatoires
 @Builder
-@Entity(name="User")
-@Table(name="users")
-public class User {
+@Entity(name="RechargeLocation")
+@Table(name="recharge_locations")
+public class RechargeLocation {
+
     @Id
     @Column(name="id", nullable=false)
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy= GenerationType.UUID)
     private String id;
 
-    @Column(name="first_name", nullable=false)
-    private String firstName;
-    @Column(name="last_name", nullable=false)
-    private String lastName;
-    @Column(name="email", nullable=false)
-    private String email;
-    @Column(name="password", nullable=false)
-    private String password;
-    @Column(name="phone_number", nullable=false)
-    private String phoneNumber;
     @Column(name="address", nullable=false)
     private String address;
-    @Column(name="postal_code", nullable=false)
-    private String postalCode;
     @Column(name="city", nullable=false)
     private String city;
-    @Column(name="role", nullable=false)
-    private String role;
-
+    @Column(name="latitude", nullable=false)
+    private Double latitude;
+    @Column(name="longitude", nullable=false)
+    private Double longitude;
+    @Column(name="instructions")
+    private String instructions;
 
     // IDE proposition pour remplacer @Data de JPA
     /**

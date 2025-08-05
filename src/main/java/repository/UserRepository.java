@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,String> {
-//De base spring possede des methodes de CRUD et de requete BDD
+//De base spring possède des méthodes de CRUD et de requête BDD
 }
