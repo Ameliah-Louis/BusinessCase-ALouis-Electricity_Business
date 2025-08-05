@@ -13,7 +13,7 @@ public class UserController {
 
     private UserRepository userRepository;
 
-    //injection de dependance dans le controller
+    //injection de dépendance dans le controller
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
