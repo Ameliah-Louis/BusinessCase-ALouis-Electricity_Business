@@ -13,25 +13,33 @@ import java.util.Objects;
 @NoArgsConstructor //constructeur vide ou par défaut
 @AllArgsConstructor //constructeur avec tous les champs même non obligatoires
 @Builder
-@Entity(name="RechargeLocation")
-@Table(name="recharge_locations")
-public class RechargeLocation {
+@Entity(name="Station")
+@Table(name="station")
+public class Station {
 
     @Id
     @Column(name="id", nullable=false)
-    @GeneratedValue(strategy= GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Column(name="address", nullable=false)
-    private String address;
-    @Column(name="city", nullable=false)
-    private String city;
-    @Column(name="latitude", nullable=false)
-    private Double latitude;
-    @Column(name="longitude", nullable=false)
-    private Double longitude;
-    @Column(name="instructions")
-    private String instructions;
+    @Column(name="name", nullable=false)
+    private String name;
+
+    @Column(name="power", nullable=false)
+    private Integer power;
+
+    @Column(name="hourly_cost", nullable=false)
+    private Double hourlyCost;
+
+    //freestanding = sur pied
+    @Column(name="freestanding", nullable=false)
+    private Boolean freestanding;
+
+    @Column(name="picture")
+    private String picture;
+
+    @Column(name="video")
+    private String video;
 
     // IDE proposition pour remplacer @Data de JPA
     /**
@@ -58,10 +66,10 @@ public class RechargeLocation {
         if (thisEffectiveClass != oEffectiveClass) return false;
 
         // Cast en User après vérification de classe
-        RechargeLocation rechargeLocation = (RechargeLocation) o;
+        Station station = (Station) o;
 
         // Deux entités sont égales si leur id est non nul et identique
-        return getId() != null && Objects.equals(getId(), rechargeLocation.getId());
+        return getId() != null && Objects.equals(getId(), station.getId());
     }
 
     // IDE proposition pour remplacer @Data de JPA
@@ -76,4 +84,5 @@ public class RechargeLocation {
         // Prend en compte la classe réelle, même si proxy
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
+
 }

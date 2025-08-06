@@ -13,25 +13,28 @@ import java.util.Objects;
 @NoArgsConstructor //constructeur vide ou par défaut
 @AllArgsConstructor //constructeur avec tous les champs même non obligatoires
 @Builder
-@Entity(name="RechargeLocation")
-@Table(name="recharge_locations")
-public class RechargeLocation {
+@Entity(name="Reservation")
+@Table(name="reservation")
+public class Reservation {
 
     @Id
     @Column(name="id", nullable=false)
-    @GeneratedValue(strategy= GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Column(name="address", nullable=false)
-    private String address;
-    @Column(name="city", nullable=false)
-    private String city;
-    @Column(name="latitude", nullable=false)
-    private Double latitude;
-    @Column(name="longitude", nullable=false)
-    private Double longitude;
-    @Column(name="instructions")
-    private String instructions;
+    @Column(name="startDate", nullable=false)
+    private String StartDate;
+
+    @Column(name="endDate", nullable=false)
+    private String EndDate;
+
+    @Column(name="cost", nullable=false)
+    private String Cost;
+
+
+// en faire une enum ?
+    @Column(name="reservation_statut", nullable=false)
+    private String ReservationStatut;
 
     // IDE proposition pour remplacer @Data de JPA
     /**
@@ -58,10 +61,10 @@ public class RechargeLocation {
         if (thisEffectiveClass != oEffectiveClass) return false;
 
         // Cast en User après vérification de classe
-        RechargeLocation rechargeLocation = (RechargeLocation) o;
+        Reservation reservation = (Reservation) o;
 
         // Deux entités sont égales si leur id est non nul et identique
-        return getId() != null && Objects.equals(getId(), rechargeLocation.getId());
+        return getId() != null && Objects.equals(getId(), reservation.getId());
     }
 
     // IDE proposition pour remplacer @Data de JPA
